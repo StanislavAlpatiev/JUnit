@@ -1,14 +1,18 @@
 import java.time.LocalDate;
+import java.io.IOException;
+import java.time.Month;
 
 public class Data {
     private static final int DEFAULT_YEAR = LocalDate.now().getYear();
+    private static final int DEFAULT_MONTH = LocalDate.now().getMonthValue();
+    private static final int DEFAULT_DAY = LocalDate.now().getDayOfMonth();
     private final int year;
     private final int month;
     private final int day;
 
-    public Data(int year, int month, int day) {
+    public Data(int year, int month, int day) throws IllegalDateException {
         if (year < 1582 || year <= 1582 && month < 10 || year <= 1582 && month <= 10 && day < 15) {
-            throw new IllegalArgumentException("Date superseded the 15th October 1582!");
+            throw new IllegalDateException(year, month, day);
         } else {
             this.year = year;
             this.month = month;
@@ -16,8 +20,12 @@ public class Data {
         }
     }
 
-    public Data(int month, int day) {
+    public Data(int month, int day) throws IllegalDateException {
         this(DEFAULT_YEAR, month, day);
+    }
+
+    public Data() throws IllegalDateException {
+        this(DEFAULT_YEAR, DEFAULT_MONTH, DEFAULT_DAY);
     }
 
     public int getYear() {

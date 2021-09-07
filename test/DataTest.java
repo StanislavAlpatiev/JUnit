@@ -31,8 +31,13 @@ class DataTest {
     }
 
     @Test
-    void constructorOverloadingTest() {
+    void constructorOverloadingWithoutYearParameterTest() {
         Data data = new Data( 10,15);
+    }
+
+    @Test
+    void constructorOverloadingWithoutParametersTest() {
+        Data data = new Data();
     }
 
     @Test
