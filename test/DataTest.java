@@ -7,12 +7,7 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DataTest {
-    Data d;
-
-    public DataTest() {
-        d = new Data(2000, 6, 22);
-        //System.out.println(String.valueOf(d));
-    }
+    final static Data TWENTYSECOND_JUN_2000 = new Data(2000, 6, 22);;
 
     @BeforeAll
     static void setUp() {
@@ -28,6 +23,18 @@ class DataTest {
 
     @AfterEach
     void tearDownAfterEachTest() {
+    }
+
+    @Test
+    void constructorSetsAttributes() {
+        assertEquals(2000, TWENTYSECOND_JUN_2000.getYear());
+        assertEquals(6, TWENTYSECOND_JUN_2000.getMonth());
+        assertEquals(22, TWENTYSECOND_JUN_2000.getDay());
+    }
+
+    @Test
+    void monthIsJunForMonth6() {
+        assertEquals("Jun", TWENTYSECOND_JUN_2000.getMonthName());
     }
 
     @Test
@@ -60,21 +67,6 @@ class DataTest {
         Data data = new Data(1582, 10,14);
     }
 
-    @Test
-    void getYearReturnTest() {
-        assertEquals(2000, d.getYear());
-    }
-
-    @Test
-    void getMonthReturnTest() {
-        assertEquals(6, d.getMonth());
-    }
-
-    @Test
-    void getDayReturnTest() {
-        assertEquals(22, d.getDay());
-    }
-
     @ParameterizedTest
     @CsvSource({"1, January", "2, February", "3, March", "4, April", "5, May", "6, Jun",
             "7, July", "8, August", "9, September", "10, October", "11, November", "12, December"})
@@ -85,7 +77,7 @@ class DataTest {
 
     @Test
     void toStringMethodFormatingTest() {
-        assertEquals("22 Jun 2000", String.valueOf(d));
+        assertEquals("22 Jun 2000", String.valueOf(TWENTYSECOND_JUN_2000));
     }
 
 }
