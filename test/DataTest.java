@@ -31,6 +31,31 @@ class DataTest {
     }
 
     @Test
+    void constructorOverloadingTest() {
+        Data data = new Data( 10,15);
+    }
+
+    @Test
+    void constructorLowerBoundPassingTest() {
+        Data data = new Data(1582, 10,15);
+    }
+
+    @Test
+    void constructorLowerBoundYearTest() {
+        Data data = new Data(1581, 10,15);
+    }
+
+    @Test
+    void constructorLowerBoundMonthTest() {
+        Data data = new Data(1582, 9,15);
+    }
+
+    @Test
+    void constructorLowerBoundDayTest() {
+        Data data = new Data(1582, 10,14);
+    }
+
+    @Test
     void getYearReturnTest() {
         assertEquals(2000, d.getYear());
     }

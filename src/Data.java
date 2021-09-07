@@ -7,9 +7,13 @@ public class Data {
     private final int day;
 
     public Data(int year, int month, int day) {
-        this.year = year;
-        this.month = month;
-        this.day = day;
+        if (year < 1582 || year <= 1582 && month < 10 || year <= 1582 && month <= 10 && day < 15) {
+            throw new IllegalArgumentException("Date superseded the 15th October 1582!");
+        } else {
+            this.year = year;
+            this.month = month;
+            this.day = day;
+        }
     }
 
     public Data(int month, int day) {
