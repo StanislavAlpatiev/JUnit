@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.time.Month;
 import java.util.Objects;
 
-public class Data {
+public class Data implements Comparable<Data>{
     private static final int DEFAULT_YEAR = LocalDate.now().getYear();
     private static final int DEFAULT_MONTH = LocalDate.now().getMonthValue();
     private static final int DEFAULT_DAY = LocalDate.now().getDayOfMonth();
@@ -73,18 +73,19 @@ public class Data {
     }
 
     @Override
-    public boolean equals(Object other) {
+    public final boolean equals(Object other) {
         if(!(other instanceof Data)) {
             return false;
         }
 
         Data otherData = (Data) other;
-        return this.year == otherData.getMonth() && this.month == otherData.getMonth() && this.day == otherData.getDay();
+        return this.year == otherData.year && this.month == otherData.month && this.day == otherData.day;
     }
 
-    public int compareTo(Data otherData) {
-        return Integer.compare(Objects.hash(this.year, this.month, this.day),Objects.hash(otherData.getYear(), otherData.getMonth(), otherData.getDay()));
-    }
+
+//    public int compareTo(Data otherData) {
+//        return Integer.compare(Objects.hash(this.year, this.month, this.day),Objects.hash(otherData.getYear(), otherData.getMonth(), otherData.getDay()));
+//    }
 
     @Override
     public int hashCode() {
@@ -95,5 +96,11 @@ public class Data {
     @Override
     public String toString () {
         return String.format("%d %s %d", day, getMonthName(), year);
+    }
+
+    @Override
+    public int compareTo(Data o) {
+        return Integer.compare(Objects.hash(this.year, this.month, this.day),
+                Objects.hash(o.getYear(), o.getMonth(), o.getDay()));
     }
 }

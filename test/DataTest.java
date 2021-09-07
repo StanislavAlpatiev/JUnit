@@ -67,6 +67,22 @@ class DataTest {
         Data data = new Data(1582, 10,14);
     }
 
+//    @Test
+//    void equalsTest() {
+//        Data data = new Data(1999, 10,14);
+//        Data data2 = new Data(1999, 10,14);
+//        boolean b = data.equals(data2);
+//        assertTrue(b);
+//    }
+
+//    @Test
+//    void compareToTest() {
+//        Data data = new Data(1999, 11,14);
+//        Data data2 = new Data(1999, 10,14);
+//        int i = data.compareTo(data2);
+//        assertEquals(0, i);
+//    }
+
     @ParameterizedTest
     @CsvSource({"1, January", "2, February", "3, March", "4, April", "5, May", "6, Jun",
             "7, July", "8, August", "9, September", "10, October", "11, November", "12, December"})

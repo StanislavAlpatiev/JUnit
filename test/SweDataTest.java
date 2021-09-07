@@ -33,6 +33,14 @@ class SweDataTest {
     }
 
     @Test
+    void equalsMethodTest() {
+        SweData s = new SweData(2000, 6,22);
+        SweData s2 = new SweData(2000, 7,22);
+        boolean b  = s.equals(s2);
+        assertFalse(b);
+    }
+
+    @Test
     void testToString() {
         SweData s = new SweData(2000, 10,22);
         assertEquals("2000-10-22", String.valueOf(s));
