@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.io.IOException;
 import java.time.Month;
+import java.util.Objects;
 
 public class Data {
     private static final int DEFAULT_YEAR = LocalDate.now().getYear();
@@ -69,6 +70,26 @@ public class Data {
             default:
                 throw new IllegalStateException(String.format("Unexpected month: %d", month));
         }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if(!(other instanceof Data)) {
+            return false;
+        }
+
+        Data otherData = (Data) other;
+        return this.year == otherData.getMonth() && this.month == otherData.getMonth() && this.day == otherData.getDay();
+    }
+
+    public int compareTo(Data otherData) {
+        return Integer.compare(Objects.hash(this.year, this.month, this.day),Objects.hash(otherData.getYear(), otherData.getMonth(), otherData.getDay()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(year, month, day);
+        //return year * 123 + month * 231 + day * 22
     }
 
     @Override

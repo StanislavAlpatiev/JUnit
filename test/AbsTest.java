@@ -20,7 +20,6 @@ class AbsTest {
     void tearDownAfterEachTest() {
     }
 
-
     @Test
     void isLeapYearTest() {
         Abs abs = new Abs();
