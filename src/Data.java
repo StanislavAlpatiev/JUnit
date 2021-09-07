@@ -28,7 +28,7 @@ public class Data {
         return day;
     }
 
-    private String getMonthName() {
+    public String getMonthName() {
         switch (month) {
             case 1:
                 return "January";
@@ -59,11 +59,8 @@ public class Data {
         }
     }
 
-
     @Override
     public String toString () {
         return String.format("%d %s %d", day, getMonthName(), year);
     }
-
-
 }
